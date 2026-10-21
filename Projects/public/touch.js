@@ -1,0 +1,10 @@
+import {connect} from './common.js';
+const $=id=>document.getElementById(id);let participant=null;
+const send=connect('touch',s=>{participant=s.participant;$('name').textContent=participant?.nombre||'Esperando participante';$('goal').textContent=participant?.deseo||'';$('load').disabled=false;$('message').textContent='';document.querySelectorAll('[data-effect],#final').forEach(b=>b.disabled=!participant);});
+$('loadForm').onsubmit=e=>{e.preventDefault();let code=$('code').value.trim();if(/^https?:\/\//.test(code)){try{code=new URL(code).searchParams.get('code')||'';}catch{code='';}}$('message').textContent='Consultando…';if(send({type:'load',code})){$('load').disabled=true;} };
+window.addEventListener('portal-error',()=>$('load').disabled=false);
+window.addEventListener('portal-disconnect',()=>$('load').disabled=false);
+document.querySelectorAll('[data-effect]').forEach(b=>b.onclick=()=>{send({type:'effect',effect:b.dataset.effect});$('message').textContent='';});
+$('final').onclick=()=>send({type:'effect',effect:'final'});
+$('reset').onclick=()=>{send({type:'reset'});$('message').textContent='';$('code').value='';};
+$('pad').onpointerdown=e=>{if(!participant)return;const b=e.currentTarget.getBoundingClientRect();send({type:'effect',effect:'goal',x:(e.clientX-b.left)/b.width,y:(e.clientY-b.top)/b.height});};
