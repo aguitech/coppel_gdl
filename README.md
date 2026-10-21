@@ -2,10 +2,10 @@
 
 Demo de **Tu futuro está en tus manos** para Afore Coppel.
 
-El código fuente, puente PHP, pruebas e instrucciones están en [Projects/](Projects/README.md).
+El código fuente, puente PHP, pruebas e instrucciones están en [Projects/coppel_gdl/](Projects/coppel_gdl/README.md).
 
 ```bash
-cd Projects
+cd Projects/coppel_gdl
 npm ci
 cp .env.example .env
 # Configura STATION_TOKEN en .env

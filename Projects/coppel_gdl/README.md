@@ -2,7 +2,7 @@
 
 Código fuente para Afore Coppel. HTML/CSS/Canvas + Node.js + WebSockets + puente PHP/PDO de lectura de la base online existente.
 
-El código vive en `Projects/` dentro del repositorio. Ejecuta los comandos desde esa carpeta.
+El código vive en `Projects/coppel_gdl/` dentro del repositorio. Ejecuta los comandos desde esa carpeta.
 
 ## Arranque rápido
 
